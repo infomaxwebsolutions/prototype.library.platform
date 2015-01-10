@@ -1,9 +1,6 @@
 {
   "name": "codenamephp/prototype.library.platform",
-  "description": "",
   "type": "library",
-  "keywords": [],
-  "homepage": "",
   "license": "Apache-2.0",
   "authors": [
     {
