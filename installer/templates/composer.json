@@ -29,5 +29,8 @@
       "de\\codenamephp\\": ["src/main/php", "src/test/php"],
       "": "vendor/pdepend/pdepend/src/main/php"
     }
+  },
+  "archive": {
+    "exclude": ["/src/test"]
   }
 }
