@@ -35,9 +35,9 @@ class Installer {
 
     $homeDir = realpath($event->getComposer()->getConfig()->get('vendor-dir') . '/..');
 
-    $namespace = $event->getIO()->ask("What's the base namespace?");
-    $displayName = $event->getIO()->ask('What is the display name of the project?');
-    $componentName = $event->getIO()->ask(sprintf('What is the name of the project? [%s]', basename($homeDir)), basename($homeDir));
+    $namespace = $event->getIO()->ask("What's the base namespace? ");
+    $displayName = $event->getIO()->ask('What is the display name of the project? ');
+    $componentName = $event->getIO()->ask(sprintf('What is the name of the project? [%s] ', basename($homeDir)), basename($homeDir));
 
     $namespacedFolder = str_replace('\\', DIRECTORY_SEPARATOR, $namespace);
 
@@ -60,7 +60,7 @@ class Installer {
     file_put_contents($testFolder . '/TestCase.php', $twig->render('TestCase.php', array('namespace' => $namespace)));
     file_put_contents($homeDir . '/nbproject/project.xml', $twig->render('project.xml', array('displayName' => $displayName)));
 
-    if($event->getIO()->askConfirmation('Replace composer.json and remove installer?', false)) {
+    if($event->getIO()->askConfirmation('Replace composer.json and remove installer?[Y/n] ', true)) {
       file_put_contents($homeDir . '/composer.json', $twig->render('composer.json', array('componentName' => $componentName)));
       $filesystem->remove($homeDir . '/installer');
     }
