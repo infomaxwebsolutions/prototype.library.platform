@@ -53,6 +53,13 @@ class Installer {
       $filesystem->mkdir($testFolder, 0755);
     }
 
+    if($filesystem->exists($homeDir . '/.git')) {
+      $filesystem->remove($homeDir . '/.git');
+    }
+    if($filesystem->exists($homeDir . '/README.md')) {
+      $filesystem->remove($homeDir . '/.README.md');
+    }
+
     $loader = new Twig_Loader_Filesystem($homeDir . '/installer/templates');
     $twig = new Twig_Environment($loader);
 
