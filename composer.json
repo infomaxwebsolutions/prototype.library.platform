@@ -10,25 +10,5 @@
   ],
   "require": {
     "php": ">=5.5.0"
-  },
-  "require-dev": {
-    "phing/phing": "2.8.*",
-    "ptrofimov/xpmock": "*",
-    "phploc/phploc": "*",
-    "pdepend/pdepend": "1.0.7",
-    "phpmd/phpmd": "*",
-    "sebastian/phpcpd": "*",
-    "phpdocumentor/phpdocumentor": "*",
-    "phpunit/phpunit": "*",
-    "mikey179/vfsStream": "v1.3.0"
-  },
-  "autoload": {
-    "classmap": ["src/main/php"]
-  },
-  "autoload-dev": {
-    "psr-0": {
-      "de\\codenamephp\\": ["src/main/php", "src/test/php"],
-      "": "vendor/pdepend/pdepend/src/main/php"
-    }
   }
 }
