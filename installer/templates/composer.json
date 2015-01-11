@@ -13,16 +13,13 @@
     "codenamephp/platform.core": "*"
   },
   "require-dev": {
+    "codenamephp/platform.test": "*",
     "phing/phing": "2.9.*",
     "phploc/phploc": "2.0.*",
     "pdepend/pdepend": "1.0.7",
     "phpmd/phpmd": "1.4.*",
     "sebastian/phpcpd": "2.0.*",
-    "phpdocumentor/phpdocumentor": "2.8.*",
-    "mikey179/vfsStream": "1.3.*",
-    "codenamephp/platform.core": "*",
-    "phpunit/phpunit": "4.4.*",
-    "ptrofimov/xpmock": "1.1.*"
+    "phpdocumentor/phpdocumentor": "2.8.*"
   },
   "autoload": {
     "classmap": ["src/main/php"]
