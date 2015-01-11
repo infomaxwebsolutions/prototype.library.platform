@@ -1,8 +1,7 @@
 {
-  "name": "codenamephp/${projectName}",
+  "name": "codenamephp/{{componentName}}",
   "type": "library",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/codenamephp/${projectName}.git",
   "authors": [
     {
       "name": "Bastian Schwarz",
@@ -10,7 +9,8 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0"
+    "php": ">=5.5.0",
+    "codenamephp/platform.core": "*"
   },
   "require-dev": {
     "phing/phing": "2.8.*",

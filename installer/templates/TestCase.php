@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2015 Bastian Schwarz <bastian@codename-php.de>.
+ * Copyright 2014 Bastian Schwarz <bastian@codename-php.de>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 /**
  * @namespace
  */
-namespace ${namespace};
+namespace {{namespace}};
 
 /**
  *
  * @author Bastian Schwarz <bastian@codename-php.de>
  */
-class Dummy {
+class TestCase extends \Xpmock\TestCase {
 //put your code here
 }
