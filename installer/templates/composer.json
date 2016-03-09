@@ -9,11 +9,12 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0",
-    "codenamephp/platform.core": "*"
+    "php": ">=5.6.0",
+    "codenamephp/platform.core": "^1",
+    "codenamephp/platform.di": "^1"
   },
   "require-dev": {
-    "codenamephp/platform.test": "*",
+    "codenamephp/platform.test": "^1",
     "phing/phing": "2.9.*",
     "phploc/phploc": "2.0.*",
     "pdepend/pdepend": "1.0.7",
