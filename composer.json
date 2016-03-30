@@ -16,15 +16,8 @@
 
   },
   "autoload": {
-    "classmap": ["src/main/php"],
     "psr-0": {
-      "de\\codenamephp\\": ["src/main/php", "src/test/php", "installer"]
-    }
-  },
-  "autoload-dev": {
-    "psr-0": {
-      "de\\codenamephp\\": ["src/main/php", "src/test/php"],
-      "": "vendor/pdepend/pdepend/src/main/php"
+      "de\\codenamephp\\": ["installer"]
     }
   },
   "scripts": {
