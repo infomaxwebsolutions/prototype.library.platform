@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model xlink:href="/usr/share/php5/PEAR/data/phing/etc/phing-grammar.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0" ?>
+
+<project name="{{displayName}}" default="composer:update">
+  <includepath classpath="${project.basedir}/vendor/pdepend/pdepend/src/main/php" />
+  <autoloader autoloaderpath="${project.basedir}/vendor/autoload.php"/>
+
+  <target name="composer:install">
+    <exec command="composer install" dir="." passthru="true" />
+  </target>
+
+  <target name="composer:update">
+    <exec command="composer update" dir="." passthru="true" />
+  </target>
+
+  <target name="ci:clean">
+    <delete dir="./target" />
+  </target>
+
+  <target name="ci:prepare">
+    <mkdir dir='./target' mode="0777" />
+    <mkdir dir='./target/jdepend' mode="0777" />
+    <mkdir dir='./target/phpmd' mode="0777" />
+    <mkdir dir='./target/phpcpd' mode="0777" />
+    <mkdir dir='./target/phploc' mode="0777" />
+    <mkdir dir='./target/api' mode="0777" />
+    <mkdir dir='./target/phpunit-reports' />
+  </target>
+
+  <target name="ci:lint">
+    <phplint>
+      <fileset dir="./src/main/php">
+        <include name="**/*.php"/>
+      </fileset>
+    </phplint>
+  </target>
+
+  <target name="ci:phploc" depends="ci:prepare" description="Measures and logs the size of the project"><!-- pdepend < 1.1 needs to be installed since phing is not yet (?) compatible with newer version  -->
+    <phploc reportType="csv" reportName="phploc" reportDirectory="./target/phploc">
+      <fileset dir="./src">
+        <include name="**/*.php" />
+        <include name="*.php" />
+      </fileset>
+    </phploc>
+  </target>
+
+  <target name="ci:pdepend" depends="ci:prepare" description="Calculate software metrics using PHP_Depend">
+    <phpdepend>
+      <fileset dir="./src/main/php">
+        <include name="**/*.php" />
+      </fileset>
+      <logger type="jdepend-xml" outfile="target/jdepend/jdepend.xml"/>
+      <logger type="jdepend-chart" outfile="target/jdepend/dependencies.svg"/>
+      <logger type="overview-pyramid" outfile="target/jdepend/overview-pyramid.svg"/>
+      <analyzer type="coderank-mode" value="method"/>
+    </phpdepend>
+  </target>
+
+  <target name="ci:phpmd" depends="ci:prepare" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
+    <phpmd>
+      <fileset dir="./src/main/php">
+        <include name="**/*.php" />
+      </fileset>
+      <formatter type="xml" outfile="target/phpmd/pmd.xml"/>
+    </phpmd>
+  </target>
+
+  <target name="ci:phpcpd" depends="ci:prepare" description="Find duplicate code using PHPCPD">
+    <phpcpd>
+      <fileset dir="." id="filestocpd">
+        <include name="src/main/php**/*.php" />
+        <include name="vendor**/*.php" />
+      </fileset>
+      <formatter type="pmd" outfile="target/phpcpd/phpcpd.xml"/>
+    </phpcpd>
+  </target>
+
+  <target name="ci:phpdox" description="Generate API documentation using phpDox">
+    <exec executable="phpdox"/>
+  </target>
+
+  <target name="ci:phpDocumentor" depends="ci:prepare" description="Generate API documentation using phpDocumentor2">
+    <phpdoc2 title="${phing.project.name} API" destdir="./target/api" template="responsive-twig">
+      <fileset dir="./src/main/php">
+        <include name="**/*.php" />
+      </fileset>
+    </phpdoc2>
+  </target>
+
+  <target name="ci:phpunit" depends="ci:prepare" description="Execute phpunit with configuration">
+    <exec command="phpunit ." dir="./src/test/php" passthru="true" />
+  </target>
+
+  <target name="ci:run" depends="ci:prepare, ci:prepare">
+    <parallel threadCount="4">
+      <phingcall target="ci:phploc" />
+      <phingcall target="ci:pdepend" />
+      <phingcall target="ci:phpmd" />
+      <phingcall target="ci:phpcpd" />
+      <phingcall target="ci:phpDocumentor" />
+      <phingcall target="ci:phpunit" />
+    </parallel>
+  </target>
+</project>

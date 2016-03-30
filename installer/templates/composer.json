@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "php": ">=5.6.0",
+    "php": ">=7",
     "codenamephp/platform.core": "^1",
     "codenamephp/platform.di": "^1"
   },

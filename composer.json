@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0",
+    "php": ">=7",
     "composer/composer": "1.0.*@dev",
     "twig/twig": "~1.0",
     "symfony/filesystem": "2.6.*"

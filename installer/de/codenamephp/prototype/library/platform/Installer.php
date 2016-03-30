@@ -48,7 +48,6 @@ class Installer {
     if(!file_exists($srcFolder)) {
       $filesystem->mkdir($srcFolder, 0755);
     }
-
     if(!file_exists($testFolder)) {
       $filesystem->mkdir($testFolder, 0755);
     }
@@ -57,7 +56,10 @@ class Installer {
       $filesystem->remove($homeDir . '/.git');
     }
     if($filesystem->exists($homeDir . '/README.md')) {
-      $filesystem->remove($homeDir . '/.README.md');
+      $filesystem->remove($homeDir . '/README.md');
+    }
+    if($filesystem->exists($homeDir . '/src/main/php/README.md')) {
+      $filesystem->remove($homeDir . '/src/main/php/README.md');
     }
 
     $loader = new Twig_Loader_Filesystem($homeDir . '/installer/templates');
@@ -66,6 +68,8 @@ class Installer {
     file_put_contents($srcFolder . '/Dummy.php', $twig->render('Dummy.php', array('namespace' => $namespace)));
     file_put_contents($testFolder . '/TestCase.php', $twig->render('TestCase.php', array('namespace' => $namespace)));
     file_put_contents($homeDir . '/nbproject/project.xml', $twig->render('project.xml', array('displayName' => $displayName)));
+    file_put_contents($homeDir . '/build.xml', $twig->render('build.xml', array('displayName' => $displayName)));
+    file_put_contents($homeDir . '/README.md', $twig->render('README.md', array('componentName' => $componentName)));
 
     if($event->getIO()->askConfirmation('Replace composer.json and remove installer?[Y/n] ', true)) {
       file_put_contents($homeDir . '/composer.json', $twig->render('composer.json', array('componentName' => $componentName)));
