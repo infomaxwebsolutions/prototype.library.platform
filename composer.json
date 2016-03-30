@@ -11,8 +11,8 @@
   "require": {
     "php": ">=7",
     "composer/composer": "1.0.*@dev",
-    "twig/twig": "~1.0",
-    "symfony/filesystem": "2.6.*"
+    "twig/twig": "^1",
+    "symfony/filesystem": "^2"
 
   },
   "autoload": {
