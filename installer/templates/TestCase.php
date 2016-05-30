@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2014 Bastian Schwarz <bastian@codename-php.de>.
+ * Copyright 2016 Bastian Schwarz <schwarz@infomax-it.de>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,11 @@
 /**
  * @namespace
  */
-
 namespace {{namespace}};
 
 /**
  *
- * @author Bastian Schwarz <bastian@codename-php.de>
+ * @author Bastian Schwarz <schwarz@infomax-it.de>
  */
 class TestCase extends \de\codenamephp\platform\test\TestCase {
 //put your code here

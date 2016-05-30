@@ -1,0 +1,32 @@
+<ruleset name="CodenamePHP">
+  <description>The infomax php standard ruleset</description>
+  <exclude-pattern>*/src/test/*</exclude-pattern>
+
+  <rule ref="PSR2">
+    <exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine"/>
+    <exclude name="PSR2.Files.EndFileNewline.NoneFound"/>
+    <exclude name="PSR2.ControlStructures.SwitchDeclaration.BreakIndent"/>
+    <exclude name="Generic.Files.LineLength.TooLong"/>
+    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"/>
+    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.SpaceAfterFunction"/>
+    <exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterKeyword"/>
+    <exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace"/>
+    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.SpaceAfterUse"/>
+    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.SpaceBeforeUse"/>
+    <exclude name="Squiz.Classes.ValidClassName.NotCamelCaps"/>
+  </rule>
+
+  <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie"/>
+  <rule ref="Generic.WhiteSpace.ScopeIndent">
+    <properties>
+      <property name="indent" value="2"/>
+      <property name="tabIndent" value="false"/>
+    </properties>
+  </rule>
+  <rule ref="Generic.Files.LineLength.TooLong">
+    <properties>
+      <property name="lineLimit" value="180"/>
+      <property name="absoluteLineLimit" value="180"/>
+    </properties>
+  </rule>
+</ruleset>

@@ -1,0 +1,25 @@
+<phpdox xmlns="http://xml.phpdox.net/config">
+  <project name="imx.PlatformPHP Image" source="./../src/main/php" workdir="./phpdox">
+    <collector publiconly="false" backend="parser" />
+
+    <generator output=".">
+      <enrich base="./logs">
+        <source type="build" />
+        <source type="git">
+          <history enabled="true" limit="15" />
+        </source>
+        <source type="checkstyle" />
+        <source type="pmd" />
+        <source type="phploc" />
+        <source type="phpunit">
+          <coverage path="../coverage/xml" />
+        </source>
+      </enrich>
+
+      <build engine="html" enabled="true" output="api">
+        <file extension="html" />
+      </build>
+      <build engine="xml" enabled="true" output="xml" />
+    </generator>
+  </project>
+</phpdox>

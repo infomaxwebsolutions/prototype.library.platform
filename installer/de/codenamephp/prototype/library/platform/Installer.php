@@ -69,6 +69,7 @@ class Installer {
     file_put_contents($testFolder . '/TestCase.php', $twig->render('TestCase.php', array('namespace' => $namespace)));
     file_put_contents($homeDir . '/nbproject/project.xml', $twig->render('project.xml', array('displayName' => $displayName)));
     file_put_contents($homeDir . '/build.xml', $twig->render('build.xml', array('displayName' => $displayName)));
+    file_put_contents($homeDir . '/build/phpdox.xml', $twig->render('phpdox.xml', array('displayName' => $displayName)));
     file_put_contents($homeDir . '/README.md', $twig->render('README.md', array('componentName' => $componentName)));
 
     if($event->getIO()->askConfirmation('Replace composer.json and remove installer?[Y/n] ', true)) {
